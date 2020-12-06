@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="" id="bdy">
+    <div class="main_div">
+        <section class="particles" id="particles-js"></section>
+        <div class="clock">
+            <div class="hour" id="hr"></div>
+            <div class="miniut" id="mn"></div>
+            <div class="second" id="sc"></div>
+        </div>    
+        <img src="images/fl.png" alt="" class="fl">
+        <img src="images/fl.png" alt="" class="lf">
+        <img src="images/space.png" alt="" class="couple">
+        <img src="images/ul.png" alt="" class="ul">
+        <img src="images/ul.png" alt="" class="lu">
+    </div>
+    <div class="btn_div">
+        <p>dark mode</p>
+        <input type="checkbox" id="check">
+    </div>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+    <script>
+        const deg = 6;
+        const hr = document.getElementById('hr');
+        const mn = document.getElementById('mn');
+        const sc = document.getElementById('sc');
+        
+        const btn = document.getElementById('check');
+
+        setInterval(()=>{
+            const day = new Date();
+            const hh = day.getHours() * 30;
+            const mm = day.getMinutes() * deg;
+            const ss = day.getSeconds() * deg;
+
+
+            hr.style.transform = `rotateZ(${hh + mm/12}deg)`;
+            mn.style.transform = `rotateZ(${mm}deg)`;
+            sc.style.transform = `rotateZ(${ss}deg)`;
+        })
+
+        btn.addEventListener('click', ()=>{
+           const body = document.getElementById('bdy');
+           body.classList.toggle('dark');
+        })
+    </script>
+</body>
+</html>
